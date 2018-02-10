@@ -1,15 +1,24 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types'
+import './Letterbuttons.css'
 
-const alphabet = [ 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o',
-                  'p','q','r','s','t','u','v','w','x', 'y', 'z']
+const alphabet = [ 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O',
+'P','Q','R','S','T','U','V','W','X', 'Y', 'Z']
 
 class LetterButton extends PureComponent {
+  static propTypes = {
+    letter: PropTypes.string.isRequired,
+  }
 
-render() {
-  return (
-    alphabet.map((letter, index)=>
-       <button>{letter}</button>
+  clickLetter(){
+    console.log(this)
+  }
+
+
+  render() {
+    return (
+      alphabet.map((letter, index)=>
+      <button  onClick={this.clickLetter.bind(this)}>{letter}</button>
     )
   )
 }
