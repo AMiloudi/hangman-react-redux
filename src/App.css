@@ -2,14 +2,10 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 100px;
   padding: 20px;
   color: white;
 }
@@ -22,7 +18,30 @@
   font-size: large;
 }
 
+.infobox{
+  margin: 0 auto;
+  width: 200px;
+}
+
+.wordbox{
+  margin-top: 40px;
+  
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.hangman {
+  background-image: url('/man.png');
+  width: 75px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.hangman.wrong-1 {background-position: -75px 0px;}
+.hangman.wrong-2 {background-position: -150px 0px;}
+.hangman.wrong-3 {background-position: -225px 0px;}
+.hangman.wrong-4 {background-position: -300px 0px;}
+.hangman.wrong-5 {background-position: -375px 0px;}
+.hangman.wrong-6 {background-position: 75px 0px;}

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 import Letters from './components/Letters'
 import Word from './components/Word'
 import Score from './components/Score'
 import PlayAgain from './components/PlayAgain'
+import Hangman from './components/Hangman'
 
 class App extends Component {
 
@@ -13,7 +15,7 @@ class App extends Component {
 
     this.state = {
       picked: [],
-      chosenWord: "php",
+      chosenWord: this.chooseWord(),
       goodAnswers: 0,
       wrongAnswers: 0,
       gameState: 0 // 0 = playing, 1 = win, 2 = lose
@@ -22,6 +24,12 @@ class App extends Component {
     this.chooseLetter = this.chooseLetter.bind(this);
     this.newGame = this.newGame.bind(this);
   }
+
+  chooseWord() {
+    let words = ["Javascript", "Software", "Development"];
+
+    return words[Math.floor(Math.random() * Math.floor(words.length))]
+}
 
   handleGameState(picked, wrongAnswers) {
     let wordLetters = this.state.chosenWord.split("");
@@ -49,7 +57,7 @@ class App extends Component {
   newGame() {
     this.setState({
       picked: [],
-      chosenWord: "PHPisveelcooler",
+      chosenWord: this.chooseWord(),
       goodAnswers: 0,
       wrongAnswers: 0,
       gameState: 0
@@ -83,19 +91,21 @@ class App extends Component {
       <h1 className="App-title">The Hangman Game</h1>
       </header>
 
-      <div class="infobox">
+      <Hangman wrongAnswers={this.state.wrongAnswers}/>
+
+      <div className="infobox">
         <Score goodAnswers={this.state.goodAnswers} wrongAnswers={this.state.wrongAnswers} gameState={this.state.gameState} chosenWord={this.state.chosenWord} />
       </div>
 
-      <div class="wordbox">
+      <div className="wordbox">
         <Word chosenWord={this.state.chosenWord} picked={this.state.picked} />
       </div>
 
-      <div class="letterbox">
+      <div className="letterbox">
         <Letters chooseLetter={this.chooseLetter} picked={this.state.picked} wrongAnswers={this.state.wrongAnswers}/>
       </div>
 
-      <div class="playagainbox">
+      <div className="playagainbox">
         <PlayAgain newGame={this.newGame} />
       </div>
 
@@ -104,4 +114,6 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ word }) => ({ word })
+
+export default connect (mapStateToProps)(App)

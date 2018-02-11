@@ -1,5 +1,7 @@
-button{
+.letterbutton{
+  margin-top: 40px;
   align-items: center;
   width: 35px;
   height: 35px;
+  margin-bottom: 40px;
 }

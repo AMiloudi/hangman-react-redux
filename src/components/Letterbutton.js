@@ -13,7 +13,7 @@ class LetterButton extends PureComponent {
     }
 
     return (
-      <button onClick={() => this.props.chooseLetter(this.props.letter)}>
+      <button className= "letterbutton" onClick={() => this.props.chooseLetter(this.props.letter)}>
         {this.props.letter}
       </button>
     )
