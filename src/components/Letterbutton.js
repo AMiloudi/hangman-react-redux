@@ -1,25 +1,24 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types'
 import './Letterbutton.css'
 
 class LetterButton extends PureComponent {
-  static propTypes = {
-    letter: PropTypes.string.isRequired
-  }
-  
-  constructor(props) {
-    super(props)
-  }
-
-  showMyletter() {
-    console.log(this.props.letter)
-  }
 
   render() {
+    if(this.props.iwaspicked === "true") {
+      return (
+        <button disabled="disabled">
+          {this.props.letter}
+        </button>
+      )
+    }
+
     return (
-      <button onClick={this.showMyletter.bind(this)}>{this.props.letter}</button>
+      <button onClick={() => this.props.chooseLetter(this.props.letter)}>
+        {this.props.letter}
+      </button>
     )
   }
+
 }
 
 export default LetterButton

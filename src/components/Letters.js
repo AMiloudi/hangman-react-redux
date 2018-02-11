@@ -8,11 +8,15 @@ class Letters extends PureComponent {
 
   render() {
     return (
-      alphabet.map((letter, index)=>
-      <LetterButton letter={letter} />
+      alphabet.map( function(letter, index) {
+        if(this.props.picked.includes(letter) || this.props.wrongAnswers == 6) {
+          return <LetterButton letter={letter} chooseLetter={this.props.chooseLetter} iwaspicked="true" />
+        }
+
+        return <LetterButton letter={letter} chooseLetter={this.props.chooseLetter} />
+      }, this)
     )
-  )
-}
+  }
 }
 
 export default Letters

@@ -1,18 +1,19 @@
 import React, { PureComponent } from 'react';
 
-const words= [ 'Table', 'Television', 'Kitchen', 'Carpet','Chair','Suitcase']
-
-
 class Word extends PureComponent {
+  render() {
 
+    let wordLetters = this.props.chosenWord.split("");
+    let dashedWord = wordLetters.map(function(letter, index){
+      if(this.props.picked.includes(letter.toUpperCase())) {
+        return letter;
+      }
 
-render() {
-  return (
-    alphabet.map((letter, index)=>
-       <button>{letter}</button>
-    )
-  )
-}
+      return " _ ";
+    }, this);
+
+    return dashedWord
+  }
 }
 
 export default Word
